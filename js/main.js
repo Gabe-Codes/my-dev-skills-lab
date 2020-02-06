@@ -1,7 +1,16 @@
-$('#add-skill').on('click', function(e) {
-    $(this).add
-})
+let $skill = $('#text-box');
 
-$('#remove').on('click', 'button', function() {
-    $(this).closest('li').remove();
-})
+$('#add-skill')
+	.click(function(e) {
+		$(`<li class="added"><button class="remove">X</button>${$skill.val()}</li>`)
+			.appendTo('ul');
+		$('.remove')
+			.click(function() {
+				$(this)
+					.closest('li')
+					.fadeOut(1000, function() {
+						$(this)
+							.remove();
+					});
+			});
+	});
